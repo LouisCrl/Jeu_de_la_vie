@@ -1,2 +1,3 @@
 # Jeu_de_la_vie
-B======D
+/pouleriqouest
+/branche mayne
