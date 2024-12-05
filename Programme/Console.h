@@ -10,9 +10,10 @@ private:
 
 public:
     Console(string file, int nb_iteration);
-    void creer_grille(string file);
+    void createGrid(string file);
     void print();
     void iteration();
+    ~Console();
 
 protected:
 

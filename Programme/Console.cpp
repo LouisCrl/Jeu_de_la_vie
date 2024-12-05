@@ -3,12 +3,12 @@
 
 Console::Console(string file, int nb_iteration){
     this->nb_iteration = nb_iteration;
-    creer_grille(file);
+    createGrid(file);
 }
 
-void Console::creer_grille(string file){
+void Console::createGrid(string file){
     Fichier *f = new Fichier(nom_fichier);
-    this->grille = new Grid(f->recup_line(), f->recup_column(), f->lireFichier());
+    this->grid = new Grid(f->recup_line(), f->recup_column(), f->lireFichier());
 }
 
 void Console::print(){
@@ -26,4 +26,7 @@ void Console::iteration(){
         this->grid->update();
         print();
     }
+}
+
+Console::~Console(){
 }
