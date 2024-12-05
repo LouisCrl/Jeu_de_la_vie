@@ -3,14 +3,14 @@
 
 class Graphic : public Game{
 private:
-    long delay;
+    long delay = 150;
     int cellSize;
     sf::RenderWindow window;
     bool running = true;
 
 public:
     Graphic();
-    Graphic(long delay, int cellSize, int l, int c);
+    Graphic(int cellSize, int l, int c);
     void createGrid();
     void updateRender();
     void iteration();
