@@ -3,15 +3,13 @@
 using namespace std;
 
 Graphic::Graphic(){
-    this->delay = 100;
     this->cellSize = 100;
     this->grid = new Grid();
-    this->window.create(sf::VideoMode(this->grid->getLine() * this->cellSize, this->grid->getColumn() * this->cellSize), "Game of Life");
+    this->window.create(sf::VideoMode(this->grid->getLine() * this->cellSize + 30, this->grid->getColumn() * this->cellSize), "Game of Life");
     createGrid();
 }
 
-Graphic::Graphic(long delay, int cellSize, int l, int c){
-    this->delay = delay;
+Graphic::Graphic(int cellSize, int l, int c){
     this->cellSize = cellSize;
     vector<vector<Cell*>> vide(l, vector<Cell*>(c, nullptr));
     for (int i = 0; i < l; ++i) {
@@ -20,14 +18,14 @@ Graphic::Graphic(long delay, int cellSize, int l, int c){
         }
     }
     this->grid = new Grid(l, c, vide);
-    this->window.create(sf::VideoMode(this->grid->getLine() * this->cellSize, this->grid->getColumn() * this->cellSize), "Game of Life");
+    this->window.create(sf::VideoMode(this->grid->getLine() * this->cellSize + 30, this->grid->getColumn() * this->cellSize), "Game of Life");
     createGrid();
 }
 
 void Graphic::createGrid(){
     bool start = false;
     sf::Event event;
-    sf::RectangleShape cell(sf::Vector2f(cellSize, cellSize));
+    sf::RectangleShape cell(sf::Vector2f(cellSize-1.0f, cellSize-1.0f));
     while (!start){
         while (this->window.pollEvent(event)){    
             if (event.type == sf::Event::Closed){
@@ -45,7 +43,7 @@ void Graphic::createGrid(){
                                     cell.setFillColor(sf::Color::Black);
                                     this->grid->getGrid()[i][j]->meurt();
                                 }else{
-                                    cell.setFillColor(sf::Color::White);
+                                    cell.setFillColor(sf::Color::Green);
                                     this->grid->getGrid()[i][j]->vie();
                                 }
                                 this->window.draw(cell);
@@ -66,13 +64,16 @@ void Graphic::createGrid(){
 }
 
 void Graphic::updateRender(){
-    this->window.clear();
     sf::RectangleShape cell(sf::Vector2f(cellSize, cellSize));
     for (int i=0; i<this->grid->getLine(); i++){
         for (int j=0; j<this->grid->getColumn(); j++){
             if (this->grid->getGrid()[i][j]->estVivant()){
                 cell.setPosition(i*cellSize, j*cellSize);
-                cell.setFillColor(sf::Color::White);
+                cell.setFillColor(sf::Color::Green);
+                this->window.draw(cell);
+            }else{
+                cell.setPosition(i*cellSize, j*cellSize);
+                cell.setFillColor(sf::Color::Black);
                 this->window.draw(cell);
             }
         }
@@ -81,6 +82,16 @@ void Graphic::updateRender(){
 }
 
 void Graphic::iteration(){
+    bool pause = false;
+    
+    sf::RectangleShape gaugeBackground(sf::Vector2f(30, this->grid->getColumn() * this->cellSize));
+    gaugeBackground.setFillColor(sf::Color::White);
+    gaugeBackground.setPosition(this->grid->getLine() * this->cellSize, 0);
+
+    sf::RectangleShape gaugeProgress(sf::Vector2f(30, 0));
+    gaugeProgress.setFillColor(sf::Color::Blue);
+    gaugeProgress.setPosition(this->grid->getLine() * this->cellSize, this->grid->getColumn() * this->cellSize);
+    
     while (this->running && this->window.isOpen()) {
         sf::Event event;
         while (this->window.pollEvent(event)) {
@@ -89,9 +100,31 @@ void Graphic::iteration(){
                 this->window.close();
                 return;
             }
-        }
 
-        if (this->running){            
+            if (event.type == sf::Event::KeyPressed){
+                if (event.key.code == sf::Keyboard::Space){
+                    pause = !pause;
+                }
+                if (event.key.code == sf::Keyboard::Down){
+                    if (this->delay < 500){
+                        this->delay += 50.0f;
+                    }
+                }
+                if (event.key.code == sf::Keyboard::Up){
+                    if (this->delay > 50){
+                        this->delay -= 50.0f;
+                    }
+                }
+            }
+        }
+        float gauge = ((550-this->delay) / 500.0f) * (this->grid->getColumn() * this->cellSize);
+        gaugeProgress.setSize(sf::Vector2f(30, -gauge));
+        
+        this->window.draw(gaugeBackground);
+        this->window.draw(gaugeProgress);
+        this->window.display();
+        
+        if (this->running && (!pause)){            
             this->grid->update();
 
             updateRender();
