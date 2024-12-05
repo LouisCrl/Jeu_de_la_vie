@@ -1,5 +1,4 @@
 #include "Graphic.h"
-#include <iostream>
 
 using namespace std;
 
