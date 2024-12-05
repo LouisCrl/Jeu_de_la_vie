@@ -1,3 +1,6 @@
+#ifndef CELL_H
+#define CELL_H
+
 class Cell{
 private:
     bool etat;
@@ -12,3 +15,5 @@ public:
 protected:
 
 };
+
+#endif
