@@ -10,8 +10,9 @@
 Fichier::Fichier(std::string chemin){       //constructeur
 
     this -> pass = chemin;                  //pass est le chemin du fichier txt
-    this -> ligne = 5;                      //nombre de ligne
-    this -> colonne = 10;                   //nombre de colonne
+    this -> new_pass = chemin;
+    this -> ligne;                      //nombre de ligne
+    this -> colonne;                   //nombre de colonne
     get_grille_data();                      //cette fonction va nous servir à ouvrir le fichier pour initialiser
                                             // ligne, colonne et donne
 
@@ -24,6 +25,17 @@ void Fichier::get_grille_data(){
     std::ifstream my_file(this -> pass);    //ifstream nous sert à ouvrir le fichier
     std::string ligne, colonne;             //ces string vont nous permettre de récuperer le nombres de lignes et de colonnes
     char data;                              //on va s'en servir pour récupérer l'état des cellules
+
+    size_t txt_erase = this -> new_pass.find_last_of('.');
+    this -> new_pass.erase(txt_erase);
+    this -> new_pass += "_out.txt";
+
+
+    std::ofstream my_save_file(new_pass);   //pour remettre le txt à zéro
+    my_save_file.close();
+
+    std::cout << new_pass << std::endl;
+
 
 
     if(my_file.is_open()){                  //on vérifie que le fichier s'est bien ouvert
@@ -48,6 +60,7 @@ void Fichier::get_grille_data(){
         }
 
     }
+    myfile.close();
 }
 
 //_______________________________________________________________________________________________________________________________________________________________________
@@ -64,6 +77,30 @@ void Fichier::lire_fichier(){
 
         std::cout << std::endl;                                         //on saute une ligne pour plus de clarté
     }
+}
+
+//_______________________________________________________________________________________________________________________________________________________________________
+
+void Fichier::ecrire(int num){
+    std::ofstream my_save_file(new_pass, std::ios::app);                //std::ios::app est un mod d'ouverture qui ne remet pas le fichier à zéro à l'ouverture
+    if (my_save_file.is_open()){
+        
+        my_save_file << "iteration numéro : " << num << std::endl;
+        for(int i=0; i<this -> ligne; i++){   
+
+            for(int j=0; j<this -> colonne; j++){                           
+                my_save_file << this -> donne[i][j]->estVivant();              
+            }
+
+            my_save_file << std::endl;                                         
+        }
+        my_save_file << std::endl << std:: endl;
+
+        my_save_file.close();
+    }
+    //p += "_out.txt";
+
+    //ofstream my_save_file(p);
 }
 
 //_______________________________________________________________________________________________________________________________________________________________________
