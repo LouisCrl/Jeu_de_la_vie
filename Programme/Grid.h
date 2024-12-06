@@ -8,7 +8,7 @@ class Grid{
 private:
     int line;
     int column;
-    
+    vector<vector<Cell*>> grid;
     void initGrid(int line, int column,vector<vector<Cell*>> grid);
 
 public:
@@ -21,7 +21,6 @@ public:
     int verif(int l, int c, Grid* temp);
     void update();
     ~Grid();
-    vector<vector<Cell*>> grid;
 
 protected:
 
