@@ -1,17 +1,15 @@
 #include "Console.h"
+#include "File.h"
 #include <iostream>
 
-Console::Console(string file, int nb_iteration){
+Console::Console(string pass_file, int nb_iteration){
     this->nb_iteration = nb_iteration;
-    creer_grille(file);
+    this->file = new File(pass_file);
+    this->grid = new Grid(file->get_ligne(), file->get_colonne(), file->get_fichier());
 }
 
-void Console::creer_grille(string file){
-    Fichier *f = new Fichier(nom_fichier);
-    this->grille = new Grid(f->recup_line(), f->recup_column(), f->lireFichier());
-}
-
-void Console::print(){
+void Console::print(int i){
+    this -> file -> ecrire(i);
     for (int i=0; i<this->grid->getLine(); i++){
         for (int j=0; j<this->grid->getColumn(); j++){
             cout << this->grid->getGrid()[i][j]->estVivant();
@@ -24,6 +22,9 @@ void Console::print(){
 void Console::iteration(){
     for (int i=0; i<this->nb_iteration; i++){
         this->grid->update();
-        print();
+        print(i);
     }
+}
+
+Console::~Console(){
 }
