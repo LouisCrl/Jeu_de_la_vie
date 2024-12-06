@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <vector>           //on importe les différentes bibliothèques utilisé dans la classe
@@ -11,8 +12,6 @@ File::File(std::string chemin){       //constructeur
 
     this -> pass = chemin;                  //pass est le chemin du fichier txt
     this -> new_pass = chemin;
-    this -> ligne;                      //nombre de ligne
-    this -> colonne;                   //nombre de colonne
     get_grille_data();                      //cette fonction va nous servir à ouvrir le fichier pour initialiser
                                             // ligne, colonne et donne
 

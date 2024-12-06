@@ -50,7 +50,7 @@ vector<vector<Cell*>> Grid::getGrid(){
     return this->grid;
 }
 
-int Grid::verif(int l, int c, Grid *temp){
+int Grid::verif(int l, int c, vector<vector<bool>> temp){
     int count = 0;
     for (int i=-1; i<2; i++){
         for (int j=-1; j<2; j++){
@@ -59,7 +59,7 @@ int Grid::verif(int l, int c, Grid *temp){
             int neighborL = l + i;
             int neighborC = c + j;
             if (neighborL >= 0 && neighborL < this->line && neighborC >= 0 && neighborC < this->column){
-                if (temp->getGrid()[neighborL][neighborC]->estVivant()) count++;
+                count += temp[neighborL][neighborC];
             }
         }
     }
@@ -67,14 +67,29 @@ int Grid::verif(int l, int c, Grid *temp){
 }
 
 void Grid::update(){
-    Grid temp = *this;
-    int count;
+    vector<vector<bool>> temp(this->line,vector<bool>(this->column));
     for (int i=0; i<this->line; i++){
         for (int j=0; j<this->column; j++){
-            count = verif(i, j, &temp);
-            if (count == 3 && (!temp.getGrid()[i][j]->estVivant())){
+            temp[i][j] = this->grid[i][j]->estVivant();
+        }
+    }
+    for (int i=0; i<this->line; i++){
+        for (int j=0; j<this->column; j++){
+            int count = 0;
+            for (int ii=-1; ii<2; ii++){
+                for (int ij=-1; ij<2; ij++){
+                    if (ii==0 && ij==0) continue;
+
+                    int neighborL = i + ii;
+                    int neighborC = j + ij;
+                    if (neighborL >= 0 && neighborL < this->line && neighborC >= 0 && neighborC < this->column){
+                        count += temp[neighborL][neighborC];
+                    }
+                }
+            }
+            if (count == 3 && (!temp[i][j])){
                 this->grid[i][j]->vie();
-            }else if ((count < 2 ||count > 3) && (temp.getGrid()[i][j]->estVivant())){
+            }else if ((count < 2 ||count > 3) && (temp[i][j])){
                 this->grid[i][j]->meurt();
             }
         }

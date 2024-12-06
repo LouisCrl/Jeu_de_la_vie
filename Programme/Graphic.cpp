@@ -117,7 +117,7 @@ void Graphic::iteration(){
         this->window.draw(gaugeProgress);
         this->window.display();
         
-        if (this->running && (!pause)){            
+        if (this->running && (!pause)){   
             this->grid->update();
 
             updateRender(l, c);

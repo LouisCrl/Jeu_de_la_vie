@@ -14,4 +14,5 @@ void Game::updateRender(){
 
 Game::~Game(){
     delete this->grid;
+    delete this->file;
 }

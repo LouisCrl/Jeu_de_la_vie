@@ -10,7 +10,6 @@ private:
 
 public:
     Console(string pass_file, int nb_iteration);
-    void createGrid(string pass_file);
     void print(int i);
     void iteration();
     ~Console();
