@@ -1,9 +1,5 @@
 #include "Game.h"
 
-void Game::createGrid(string file){
-    return;
-}
-
 void Game::createGrid(){
     return;
 }
