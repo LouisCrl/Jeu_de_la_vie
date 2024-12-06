@@ -1,5 +1,8 @@
 #include "Console.h"
+<<<<<<< HEAD
 #include "Fichier.h"
+=======
+>>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306
 #include <iostream>
 
 Console::Console(string file, int nb_iteration){
@@ -30,4 +33,8 @@ void Console::iteration(){
 }
 
 Console::~Console(){
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306

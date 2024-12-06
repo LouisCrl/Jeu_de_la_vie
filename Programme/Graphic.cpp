@@ -1,5 +1,8 @@
 #include "Graphic.h"
+<<<<<<< HEAD
 #include "File.h"
+=======
+>>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306
 
 using namespace std;
 
@@ -10,14 +13,27 @@ Graphic::Graphic(){
     createGrid();
 }
 
+<<<<<<< HEAD
 Graphic::Graphic(string pass_file, int cellSize){
     this->cellSize = cellSize;
     this->file = file;
     this->grid = new Grid(this->file.get_ligne(), this->file.get_column(), get_fichier());
+=======
+Graphic::Graphic(int cellSize, int l, int c){
+    this->cellSize = cellSize;
+    vector<vector<Cell*>> vide(l, vector<Cell*>(c, nullptr));
+    for (int i = 0; i < l; ++i) {
+        for (int j = 0; j < c; ++j) {
+            vide[i][j] = new Cell();
+        }
+    }
+    this->grid = new Grid(l, c, vide);
+>>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306
     this->window.create(sf::VideoMode(this->grid->getLine() * this->cellSize + 30, this->grid->getColumn() * this->cellSize), "Game of Life");
     createGrid();
 }
 
+<<<<<<< HEAD
 void Graphic::createGrid(string file){
     bool start = false;
     sf::Event event;
@@ -28,6 +44,12 @@ void Graphic::createGrid(string file){
     gaugeBackground.setPosition(this->grid->getLine() * this->cellSize, 0);
     this->window.draw(gaugeBackground);
     
+=======
+void Graphic::createGrid(){
+    bool start = false;
+    sf::Event event;
+    sf::RectangleShape cell(sf::Vector2f(cellSize-1.0f, cellSize-1.0f));
+>>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306
     while (!start){
         while (this->window.pollEvent(event)){    
             if (event.type == sf::Event::Closed){
@@ -100,7 +122,10 @@ void Graphic::iteration(){
             if (event.type == sf::Event::Closed){
                 this->running = false;
                 this->window.close();
+<<<<<<< HEAD
                 this->window.close();
+=======
+>>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306
                 return;
             }
 
@@ -138,4 +163,8 @@ void Graphic::iteration(){
 }
 
 Graphic::~Graphic(){
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306

@@ -24,4 +24,8 @@ public:
 
 protected:
 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306
