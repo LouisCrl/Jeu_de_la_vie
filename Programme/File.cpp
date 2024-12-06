@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 #include "Fichier.h"
+=======
+#include <iostream>
+#include <fstream>
+#include <vector>           //on importe les différentes bibliothèques utilisé dans la classe
+#include <string>
+#include "Fichier.h"
+#include "Cell.h"           //la classe Cell nous servira à creer notre vector de vector de Cellules
+>>>>>>> c46eea76f77206b79534d70827fcd3657e6f5100
 
 //_______________________________________________________________________________________________________________________________________________________________________
 
@@ -55,7 +64,11 @@ void Fichier::get_grille_data(){
         }
 
     }
+<<<<<<< HEAD
     my_file.close();
+=======
+    myfile.close();
+>>>>>>> c46eea76f77206b79534d70827fcd3657e6f5100
 }
 
 //_______________________________________________________________________________________________________________________________________________________________________
