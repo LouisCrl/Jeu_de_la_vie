@@ -4,7 +4,7 @@ void Controller::createGameConsole(string file){
     //this->game = Console(file);
 }
 
-void Controller::createGameGraphic(int cellSize, int l, int c){
+void Controller::createGameGraphic(string file, int cellSize){
     this->game = new Graphic(cellSize, l, c);
 }
 

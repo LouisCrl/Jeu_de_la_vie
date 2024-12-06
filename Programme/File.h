@@ -1,25 +1,14 @@
+
+#ifndef FICHIER_H
+#define FICHIER_H
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 #include "Cell.h"
 
-<<<<<<< HEAD
-using namespace std;
-
-class Fichier{
-private:
-    string pass;
-    string new_pass;
-    int ligne;
-    int colonne;
-    vector<vector<Cell*>> donne;
-
-
-public:
-    Fichier(string chemin);
-=======
-class Fichier{
+class File{
 
 private:
     std::string pass;
@@ -30,17 +19,15 @@ private:
 
 
 public:
-    Fichier(std::string chemin);
->>>>>>> c46eea76f77206b79534d70827fcd3657e6f5100
+    File(std::string chemin);
     void lire_fichier();
     bool stob(char);
     void get_grille_data();
     void ecrire(int num);
-
-<<<<<<< HEAD
-protected:
-
+    int get_ligne();
+    int get_colonne();
+    std::vector<std::vector<Cell*>> get_fichier();
 };
-=======
-};
->>>>>>> c46eea76f77206b79534d70827fcd3657e6f5100
+
+
+#endif

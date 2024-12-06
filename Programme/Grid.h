@@ -18,14 +18,10 @@ public:
     int getLine();
     int getColumn();
     vector<vector<Cell*>> getGrid();
-    int verif(int l, int c, Grid* temp);
+    int verif(int l, int c, vector<vector<bool>> temp);
     void update();
     ~Grid();
 
 protected:
 
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 3f3e9a80f3be3a3e6932c2f93495d26f5b97b306

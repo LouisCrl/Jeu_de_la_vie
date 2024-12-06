@@ -1,13 +1,12 @@
-#include "Controller.h"
+#include "Console.h"
+#include "Graphic.h"
 
 int main(){
-    Controller c;
+    Game *c = new Graphic("test.txt", 8);
     
-    c.createGameGraphic(20, 24, 35);
-
-    c.play();
+    c->iteration();
     
-    c.deleteGame();
+    delete c;
 
     return 0;
 }
