@@ -18,7 +18,6 @@ public:
     int getLine();
     int getColumn();
     vector<vector<Cell*>> getGrid();
-    int verif(int l, int c, vector<vector<bool>> temp);
     void update();
     ~Grid();
 

@@ -8,6 +8,15 @@
 
 //_______________________________________________________________________________________________________________________________________________________________________
 
+File::File(){       //constructeur
+
+    this -> pass = "base.txt";                  //pass est le chemin du fichier txt
+    this -> new_pass = "base.txt";
+    get_grille_data();                      //cette fonction va nous servir à ouvrir le fichier pour initialiser
+                                            // ligne, colonne et donne
+
+}
+
 File::File(std::string chemin){       //constructeur
 
     this -> pass = chemin;                  //pass est le chemin du fichier txt

@@ -2,6 +2,12 @@
 #include "File.h"
 #include <iostream>
 
+Console::Console(){
+    this->nb_iteration = 5;
+    this->file = new File();
+    this->grid = new Grid();
+}
+
 Console::Console(string pass_file, int nb_iteration){
     this->nb_iteration = nb_iteration;
     this->file = new File(pass_file);

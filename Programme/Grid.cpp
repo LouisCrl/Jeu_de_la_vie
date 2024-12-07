@@ -50,22 +50,6 @@ vector<vector<Cell*>> Grid::getGrid(){
     return this->grid;
 }
 
-int Grid::verif(int l, int c, vector<vector<bool>> temp){
-    int count = 0;
-    for (int i=-1; i<2; i++){
-        for (int j=-1; j<2; j++){
-            if (i==0 && j==0) continue;
-
-            int neighborL = l + i;
-            int neighborC = c + j;
-            if (neighborL >= 0 && neighborL < this->line && neighborC >= 0 && neighborC < this->column){
-                count += temp[neighborL][neighborC];
-            }
-        }
-    }
-    return count;
-}
-
 void Grid::update(){
     vector<vector<bool>> temp(this->line,vector<bool>(this->column));
     for (int i=0; i<this->line; i++){

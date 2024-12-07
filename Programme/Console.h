@@ -9,6 +9,7 @@ private:
     int nb_iteration;
 
 public:
+    Console();
     Console(string pass_file, int nb_iteration);
     void print(int i);
     void iteration();
