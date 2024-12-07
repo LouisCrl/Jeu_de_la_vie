@@ -1,20 +1,18 @@
-
 #ifndef CELL_H
 #define CELL_H
 
 class Cell{
 private:
-    bool etat;
 
 public:
-    Cell();
-    Cell(bool etat);
-    bool estVivant();
-    void vie();
-    void meurt();
+    virtual bool estVivant();
+    virtual void vie() = 0;
+    virtual void meurt() = 0;
+    virtual ~Cell();
 
 protected:
-
+    bool etat;
+    
 };
 
 #endif
