@@ -1,11 +1,11 @@
 #include "Controller.h"
 
-void Controller::createGameConsole(string file){
-    //this->game = Console(file);
+void Controller::createGameConsole(string file, int nb_iteration){
+    this->game = new Console(file, nb_iteration);
 }
 
 void Controller::createGameGraphic(string file, int cellSize){
-    this->game = new Graphic(cellSize, l, c);
+    this->game = new Graphic(file, cellSize);
 }
 
 void Controller::play(){
