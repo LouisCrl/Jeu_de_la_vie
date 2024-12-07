@@ -2,7 +2,7 @@
 CC = g++
 CFLAGS = -std=c++11 -Wall
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
-SRCS = Cell.cpp Grid.cpp Graphic.cpp Console.cpp Game.cpp File.cpp main.cpp Controller.cpp
+SRCS = N_Cell.cpp Obs_Cell.cpp Cell.cpp Grid.cpp Graphic.cpp Console.cpp Game.cpp File.cpp Controller.cpp main.cpp 
 OBJS = $(SRCS:.cpp=.o)
 EXEC = main
 

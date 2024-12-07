@@ -5,7 +5,7 @@ Grid::Grid(){
     vector<vector<Cell*>> grid(5, vector<Cell*>(5, nullptr));
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
-            grid[i][j] = new Cell();
+            grid[i][j] = new N_Cell();
 
         }
     }
@@ -14,22 +14,6 @@ Grid::Grid(){
 
 Grid::Grid(int line, int column, vector<vector<Cell*>> grid){
     initGrid(line, column, grid);
-}
-
-Grid::Grid(const Grid& other){
-    this->line = other.line;
-    this->column = other.column;
-    this->grid.resize(this->line);
-    for (int i = 0; i < this->line; ++i) {
-        this->grid[i].resize(this->column);
-        for (int j = 0; j < this->column; ++j) {
-            if (other.grid[i][j] != nullptr) {
-                this->grid[i][j] = new Cell(*other.grid[i][j]);
-            } else {
-                this->grid[i][j] = nullptr;
-            }
-        }
-    }
 }
 
 void Grid::initGrid(int line, int column, vector<vector<Cell*>> grid){

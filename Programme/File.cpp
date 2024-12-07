@@ -1,10 +1,4 @@
-
-#include <iostream>
-#include <fstream>
-#include <vector>           //on importe les différentes bibliothèques utilisé dans la classe
-#include <string>
 #include "File.h"
-#include "Cell.h"           //la classe Cell nous servira à creer notre vector de vector de Cellules
 
 //_______________________________________________________________________________________________________________________________________________________________________
 
@@ -42,7 +36,7 @@ void File::get_grille_data(){
     std::ofstream my_save_file(new_pass);   //pour remettre le txt à zéro
     my_save_file.close();
 
-    std::cout << new_pass << std::endl;
+    //std::cout << new_pass << std::endl;
 
 
 
@@ -58,11 +52,18 @@ void File::get_grille_data(){
             std::vector<Cell*> ligne_i;                         //à chaque lignes on crée un vector de Cellules
 
             for (int j=0; j<this -> colonne; j++){              //on parcours tout les éléments de la ligne grâce au nombre de colonnes
-
                 my_file >> data;                                //chaque charactère est lu un par un dans la variable data
-                ligne_i.push_back(new Cell(stob(data)));        //on ajoute une cellule dans le vector ligne_i en fonction de data
+                if (data == '2'){
+                    ligne_i.push_back(new Obs_Cell(stob('0')));
+                }else if (data == '3'){
+                    ligne_i.push_back(new Obs_Cell(stob('1')));
+                }else{
+                    ligne_i.push_back(new N_Cell(stob(data)));
+                }        //on ajoute une cellule dans le vector ligne_i en fonction de data
                                                                 //stob est une fonction créer en dessous qui nous permet de transformer un char en un bool
+                //cout << ligne_i[j]->estVivant() << endl;
             }
+            cout << endl;
 
             this -> donne.push_back(ligne_i);                   //on rajoute le vector dans notre vector de vector
         }

@@ -1,4 +1,5 @@
-#include "Cell.h"
+#include "N_Cell.h"
+#include "Obs_Cell.h"
 #include <vector>
 #include <string>
 
@@ -14,7 +15,6 @@ private:
 public:
     Grid();
     Grid(int line, int column, vector<vector<Cell*>> grid);
-    Grid(const Grid& other);
     int getLine();
     int getColumn();
     vector<vector<Cell*>> getGrid();

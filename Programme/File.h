@@ -5,7 +5,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include "Cell.h"
+#include "Obs_Cell.h"
+#include "N_Cell.h"
 
 using namespace std;
 
