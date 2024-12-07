@@ -50,9 +50,43 @@ void Grid::update(){
 
                     int neighborL = i + ii;
                     int neighborC = j + ij;
-                    if (neighborL >= 0 && neighborL < this->line && neighborC >= 0 && neighborC < this->column){
+                    if (neighborL >= 0 && neighborL < this->line && neighborC >= 0 && neighborC < this->column){ //si tout est normal
                         count += temp[neighborL][neighborC];
                     }
+                    
+                    else if (neighborL == -1){               //si la voisine se situe au dessus de la matrice
+                        if(neighborC >= 0 && neighborC < this->column){           //si l'axe x est correcte
+                            count += temp[this -> line -1][neighborC];             //alors on va chercher la cellule en bas qui correspond à la colonne
+                        }
+                        else if(neighborC == -1){                                  //si la cellule est dans le coin haut gauche
+                            count += temp[this -> line -1][this -> column -1];     //on va chercher en bas à droitei
+                        }
+                        else{                                                      //si la cellule est dans le coin haut droite
+                            count += temp[this -> line -1][0];                     //on cherche la cellule en bas à gauche
+                        }
+                    }
+                    
+                    else if (neighborL >= 0 && neighborL < this -> line){    //si la cellules voisines est correcte sur l'axe y
+                        if(neighborC == -1){                                  //si la cellules est trop à gauche
+                            count += temp[neighborL][this -> column -1];      //on va la cherché à droite
+                        }
+                        else{           //c'est bon
+                            count += temp[neighborL][0];
+                        }
+                    }
+                    else{
+                        if(neighborC >= 0 && neighborC < this->column){
+                            count += temp[0][neighborC];
+                        }
+                        else if(neighborC == -1){
+                            count += temp[0][this -> column -1];
+                        }
+                        else{
+                            count += temp[0][0];
+                        }
+                        
+                    }
+
                 }
             }
             if (count == 3 && (!temp[i][j])){
