@@ -61,9 +61,7 @@ void File::get_grille_data(){
                     ligne_i.push_back(new N_Cell(stob(data)));
                 }        //on ajoute une cellule dans le vector ligne_i en fonction de data
                                                                 //stob est une fonction créer en dessous qui nous permet de transformer un char en un bool
-                //cout << ligne_i[j]->estVivant() << endl;
             }
-            cout << endl;
 
             this -> donne.push_back(ligne_i);                   //on rajoute le vector dans notre vector de vector
         }
