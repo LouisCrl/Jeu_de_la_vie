@@ -1,7 +1,5 @@
 #include <iostream>
-#include <stream>
-#include "Console.h"
-#include "Graphic.h"
+#include "Controller.h"
 
 using namespace std;
 
@@ -14,4 +12,4 @@ private:
 public:
     View(int choice, string pass_file);
     void lancer_view();
-}
+};
