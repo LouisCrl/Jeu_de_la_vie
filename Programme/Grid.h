@@ -7,18 +7,18 @@ using namespace std;
 
 class Grid{
 private:
-    int line;
-    int column;
-    vector<vector<Cell*>> grid;
-    void initGrid(int line, int column,vector<vector<Cell*>> grid);
+    int line;                                                           //Nombre de lignes
+    int column;                                                         //Nombre de colonne
+    vector<vector<Cell*>> grid;                                         //Stocke la grille
+    void initGrid(int line, int column,vector<vector<Cell*>> grid);     //Initialise la grile
 
 public:
-    Grid();
-    Grid(int line, int column, vector<vector<Cell*>> grid);
-    int getLine();
-    int getColumn();
-    vector<vector<Cell*>> getGrid();
-    void update();
+    Grid();                                                             //Constructeur par défaut
+    Grid(int line, int column, vector<vector<Cell*>> grid);             //Constructeur
+    int getLine();                                                      //Permet d'avoir le nombre de ligne
+    int getColumn();                                                    //Permet d'avoir le nombre de colonnes
+    vector<vector<Cell*>> getGrid();                                    //Permet d'avoir la grille
+    void update();                                                      //Met à jour la grille
     ~Grid();
 
 protected:
