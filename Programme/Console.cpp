@@ -2,6 +2,9 @@
 #include "File.h"
 #include <iostream>
 
+//_______________________________________________________________________________________________________________________________________________________________________
+//Constructeurs
+
 Console::Console(){
     this->nb_iteration = 5;
     this->file = new File();
@@ -14,6 +17,9 @@ Console::Console(string pass_file, int nb_iteration){
     this->grid = new Grid(file->get_ligne(), file->get_colonne(), file->get_fichier());
 }
 
+//_______________________________________________________________________________________________________________________________________________________________________
+//Affiche la grille
+
 void Console::print(int i){
     this -> file -> ecrire(i);
     for (int i=0; i<this->grid->getLine(); i++){
@@ -24,6 +30,9 @@ void Console::print(int i){
     }
     cout << endl;
 }
+
+//_______________________________________________________________________________________________________________________________________________________________________
+//Réalise les itérations
 
 void Console::iteration(){
     for (int i=0; i<this->nb_iteration; i++){
