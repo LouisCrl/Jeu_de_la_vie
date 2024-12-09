@@ -141,3 +141,4 @@ Ci-dessous, un diagramme de classe donnant une représentation plus imagée de l
 Un dossier Github a été créé pour répertorier tous les diagrammes et les codes : 
 
 Lien Github 
+https://github.com/LouisCrl/Jeu_de_la_vie
